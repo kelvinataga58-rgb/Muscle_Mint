@@ -32,7 +32,7 @@
         android:layout_margin="20dp"
         android:textSize="20sp"
         android:padding="10dp"
-         android:backgroundTint="#BEDB9D"
+         android:backgroundTint="#FF5722"
         android:id="@+id/signin"
         android:fontFamily="sans-serif-condensed-light"
         />
@@ -45,7 +45,7 @@
         android:textSize="20sp"
         android:id="@+id/signup"
         android:padding="10dp"
-        android:backgroundTint="#BEDB9D"
+        android:backgroundTint="#FF5722"
         android:fontFamily="sans-serif-condensed-light"
         />
 
