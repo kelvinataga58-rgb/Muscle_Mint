@@ -1,10 +1,15 @@
 package com.kelvin.simbasokogarden
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.loopj.android.http.RequestParams
 
 class SignUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,5 +21,34 @@ class SignUp : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val signup = findViewById<TextView>(R.id.signup_button)
+
+        signup.setOnClickListener {
+            val signUplink = Intent(applicationContext, SignIn::class.java)
+            startActivity(signUplink)
+        }
+
+        val username = findViewById<EditText>(R.id.username)
+        val email = findViewById<EditText>(R.id.email_address)
+        val phone = findViewById<EditText>(R.id.phone_number)
+        val password = findViewById<EditText>(R.id.password)
+
+        val signupbutton = findViewById<Button>(R.id.signup_button)
+        signupbutton.setOnClickListener {
+            val api = "http://papii.alwaysdata.net/api/signup"
+
+            val data = RequestParams()
+            data.put("username",username.text.toString())
+            data.put("email", email.text.toString())
+            data.put("phone",phone.toString())
+            data.put("password", password.text.toString().trim())
+
+
+            val helper = ApiHelper(applicationContext)
+            helper.post(api, data)
+
+        }
+
     }
 }
